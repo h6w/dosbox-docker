@@ -1,0 +1,41 @@
+--- dosbox-0.74-orig/include/dos_inc.h
++++ dosbox-0.74/include/dos_inc.h
+@@ -21,6 +21,7 @@
+ #ifndef DOSBOX_DOS_INC_H
+ #define DOSBOX_DOS_INC_H
+ 
++#include <stddef.h>
+ #ifndef DOSBOX_DOS_SYSTEM_H
+ #include "dos_system.h"
+ #endif
+--- dosbox-0.74-orig/src/cpu/cpu.cpp
++++ dosbox-0.74/src/cpu/cpu.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <assert.h>
+ #include <sstream>
++#include <stddef.h>
+ #include "dosbox.h"
+ #include "cpu.h"
+ #include "memory.h"
+--- dosbox-0.74-orig/src/dos/dos.cpp
++++ dosbox-0.74/src/dos/dos.cpp
+@@ -22,6 +22,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <time.h>
++#include <stddef.h>
+ #include "dosbox.h"
+ #include "bios.h"
+ #include "mem.h"
+--- dosbox-0.74-orig/src/ints/ems.cpp
++++ dosbox-0.74/src/ints/ems.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
++#include <stddef.h>
+ #include "dosbox.h"
+ #include "callback.h"
+ #include "mem.h"
+

@@ -1,9 +1,18 @@
-FROM ubuntu:14.04
+FROM alpine:3.4
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-  dosbox
+ADD [ "dosbox-0.74.tar.gz", "dosbox-0.74.patch", "/build/" ]
 
-RUN mkdir /dosbox
+RUN apk update \
+ && apk add build-base sdl sdl-dev linux-headers \
+ && mkdir /dosbox \
+ && cd /build \
+ && patch -p0 < dosbox-0.74.patch \
+ && cd dosbox-0.74 \
+ && ./configure --prefix=/usr \
+ && make \
+ && make install \
+ && apk del build-base sdl-dev linux-headers \
+ && rm -R /build
 
 # Mounting the config and data directory
 VOLUME  [/root/.dosbox]
