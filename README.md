@@ -10,7 +10,7 @@ You can start a dosbox container with those 2 commands:
 
 ``` xhost + ```
 
-``` docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /path/on/your/system/data:/dosbox -v /path/on/your/system/config:/root/.dosbox lacsap/dosbox ```
+``` docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /path/on/your/system/data:/dosbox -v /path/on/your/system/config:/root/.dosbox tudorh/dosbox ```
 
 - replace ``` /path/on/your/system/data ``` and ``` /path/on/your/system/config ``` with any directory on your system where you wish to store the data and config of dosbox.
 - after dosbox is launched, type ``` MOUNT C /dosbox ``` in the prompt to mount your data volume in dosbox. (you can automate this by putting the mount command at the end of dosbox's config file)
