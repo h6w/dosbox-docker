@@ -3,7 +3,7 @@ FROM alpine:3.4
 ADD [ "dosbox-0.74.tar.gz", "dosbox-0.74.patch", "/build/" ]
 
 RUN apk update \
- && apk add build-base sdl sdl-dev linux-headers \
+ && apk add sdl libxxf86vm libstdc++ libgcc build-base sdl-dev linux-headers \
  && mkdir /dosbox \
  && cd /build \
  && patch -p0 < dosbox-0.74.patch \
