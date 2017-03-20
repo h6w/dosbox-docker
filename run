@@ -1,0 +1,18 @@
+#!/bin/bash
+docker rm dosbox
+USER_UID=$(id -u)
+USER_GID=$(id -g)
+xhost +local:docker
+
+docker run -ti --rm \
+	--cap-add=SYS_PTRACE \
+	--env=USER_UID=$USER_UID \
+	--env=USER_GID=$USER_GID \
+	--env=DISPLAY=unix$DISPLAY \
+	-v /dev/shm:/dev/shm \
+	-v $HOME/.config/pulse:/home/gamer/.config/pulse:ro \
+	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+	-v /run/user/$USER_UID/pulse:/run/pulse:ro \
+	-v $HOME/dosbox:/dosbox \
+	--name dosbox \
+	dosbox $1
