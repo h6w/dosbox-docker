@@ -1,0 +1,10 @@
+#!/bin/bash
+docker rm dosbox
+xhost +local:docker
+
+docker run -ti --rm \
+	--env=DISPLAY=unix$DISPLAY \
+	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+	-v $HOME/dosbox:/dosbox \
+	--name dosbox \
+	tudorh/dosbox:noaudio $1
