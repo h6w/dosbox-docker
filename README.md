@@ -1,7 +1,6 @@
 # dosbox in a container
 
 [![Microbadger](https://images.microbadger.com/badges/image/tudorh/dosbox.svg)](http://microbadger.com/images/tudorh/dosbox "Image size")
-[![Issue Count](https://codeclimate.com/github/h6w/dosbox-docker/badges/issue_count.svg)](https://codeclimate.com/github/h6w/dosbox-docker)
 [![Docker Stars](https://img.shields.io/docker/stars/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/) 
 [![Docker Pulls](https://img.shields.io/docker/pulls/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY3DF5LBT46BE)
