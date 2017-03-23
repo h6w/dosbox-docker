@@ -1,5 +1,7 @@
 # dosbox in a container
 
+[![Docker Stars](https://img.shields.io/docker/stars/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/) [![Docker Pulls](https://img.shields.io/docker/pulls/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/)
+
 This Dockerfile will create an image from which you can run a dosbox container.
 The dosbox config file is located in the /root/.dosbox/ volume, and the /dosbox volume will be where you write your data.
 If you write anywhere but in those two directory (/dosbox and /root/.dosbox/) you will lose that data once you destroy the container.
