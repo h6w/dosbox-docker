@@ -22,9 +22,9 @@ There are currently 3 versions with matching docker hub tags:
 
 1. Create a folder for dosbox in your home directory:
 
-```
+    ```
     mkdir $HOME/dosbox
-```
+    ```
 
 1. Download the run script from here:
     * [run-noaudio](https://raw.githubusercontent.com/h6w/dosbox-docker/master/run-noaudio)
@@ -32,15 +32,15 @@ There are currently 3 versions with matching docker hub tags:
 
 1. Make it executable:
 
-```
-chmod a+x run-*
-```
+    ```
+    chmod a+x run-*
+    ```
 
 1. Run it:
 
-```
-./run-noaudio
-```
+    ```
+    ./run-noaudio
+    ```
 
 NB: If you want to bypass the dosbox startup, you can optionally pass a command to the run script, e.g. `run-noaudio /bin/sh`
 
@@ -49,50 +49,71 @@ NB: If you want to bypass the dosbox startup, you can optionally pass a command 
 
 1. Allow your xhost to connect to the docker container
 
-``` xhost +local:docker ```
+    ``` xhost +local:docker ```
 
-1. Run tudorh/dosbox with appropriate options:
+1. Choose the appropriate options:
 
-    * `docker run`
-    * Pick the image you need:
+    1. Pick the image you need:
         * tudorh/dosbox:noaudio - for a local X without audio
         * tudorh/dosbox:hostpulse - for a local X with audio based on pulseaudio
         * tudorh/dosbox:remote - for a non-local X
 
-    * Specify a volume for dosbox
+    1. Specify a volume for dosbox
 
-```
--v /path/to/dosboxapp:/dosbox
-```
+        ```
+        -v /path/to/dosboxapp:/dosbox
+        ```
 
-    * To run on a local host's X display, you need:
+    1. If you want to run on a local host's X display, you need:
 
-```
-	--env=DISPLAY=unix$DISPLAY
-	-v /tmp/.X11-unix:/tmp/.X11-unix:ro
-```
+        ```
+        --env=DISPLAY=unix$DISPLAY
+        -v /tmp/.X11-unix:/tmp/.X11-unix:ro
+        ```
 
 
-    * To connect to a local host's pulseaudio, you need:
+    1. If you want to use your local host's pulseaudio, you need:
         * To get your local user ID and group ID:
 
-```
-export USER_UID=$(id -u)
-export USER_GID=$(id -g)
-```
+            ```
+            export USER_UID=$(id -u)
+            export USER_GID=$(id -g)
+            ```
 
         *  and pass that to the image:
-```
---env=USER_UID=$USER_UID
---env=USER_GID=$USER_GID
-```
+
+            ```
+            --env=USER_UID=$USER_UID
+            --env=USER_GID=$USER_GID
+            ```
 
         * And connect as that user and group id to pulseaudio:
-```
--v /dev/shm:/dev/shm
--v $HOME/.config/pulse:/home/gamer/.config/pulse:ro
--v /run/user/$USER_UID/pulse:/run/pulse:ro
-```
+
+            ```
+            -v /dev/shm:/dev/shm
+            -v $HOME/.config/pulse:/home/gamer/.config/pulse:ro
+            -v /run/user/$USER_UID/pulse:/run/pulse:ro
+            ```
+	    
+1. Put it all together:
+
+    ```
+    export USER_UID=$(id -u)
+    export USER_GID=$(id -g)
+    xhost +local:docker
+
+    docker run -ti \
+            --env=DISPLAY=unix$DISPLAY \
+            -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+            --env=USER_UID=$USER_UID \
+            --env=USER_GID=$USER_GID \
+            -v /dev/shm:/dev/shm \
+            -v $HOME/.config/pulse:/home/gamer/.config/pulse:ro \
+            -v /run/user/$USER_UID/pulse:/run/pulse:ro \
+            -v $HOME/dosbox:/dosbox \
+            --name dosbox \
+            tudorh/dosbox:hostpulse
+    ```
 
 ## Using and configuring dosbox
 
