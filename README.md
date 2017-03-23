@@ -1,6 +1,9 @@
 # dosbox in a container
 
-[![Docker Stars](https://img.shields.io/docker/stars/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/) [![Docker Pulls](https://img.shields.io/docker/pulls/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/)
+[![Microbadger](https://images.microbadger.com/badges/image/tudorh/dosbox.svg)](http://microbadger.com/images/tudorh/dosbox "Image size")
+[![Docker Stars](https://img.shields.io/docker/stars/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/) 
+[![Docker Pulls](https://img.shields.io/docker/pulls/tudorh/dosbox.svg?maxAge=86400)](https://hub.docker.com/r/tudorh/dosbox/)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY3DF5LBT46BE)
 
 This Dockerfile will create an image from which you can run a dosbox container.
 The dosbox config file is located in the /root/.dosbox/ volume, and the /dosbox volume will be where you write your data.
