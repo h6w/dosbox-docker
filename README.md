@@ -13,7 +13,7 @@ There are currently 3 versions with matching docker hub tags:
 
 * noaudio - Audio is disabled
 * host-pulse - Use your host's pulseaudio 
-* remote - Runs headless so you can connect via VNC/RDesktop  (TODO - Probably available w/e March 31, 2017)
+* remote - Runs headless so you can connect via VNC/RDesktop  (In Progress - Probably available w/e March 31, 2017)
 
 ## How to use it
 
