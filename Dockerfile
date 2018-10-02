@@ -1,12 +1,12 @@
 FROM alpine:edge
 
-ADD [ "dosbox-0.74.tar.gz", "dosbox-0.74.patch", "/build/" ]
+ADD [ "dosbox-0.74-2.tar.gz", "dosbox-0.74.patch", "/build/" ]
 
 RUN apk add --no-cache sdl libxxf86vm libstdc++ libgcc build-base sdl-dev linux-headers file \
  && mkdir /dosbox \
  && cd /build \
  && patch -p0 < dosbox-0.74.patch \
- && cd dosbox-0.74 \
+ && cd dosbox-0.74-2 \
  && ./configure --prefix=/usr \
  && make \
  && make install \
